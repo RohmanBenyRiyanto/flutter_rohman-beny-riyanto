@@ -1,8 +1,10 @@
-# Tugas Praktikum – Basic Version and Branch Management (Git)
+# (2) Tugas Praktikum – Basic Version and Branch Management (Git)
 
 | NAMA |  KELAS
 |--|--|
 | Rohman Beny Riyanto  |  Flutter A
+
+Lihat github repository (2) Basic Version and Branch Management (Git) [View](https://github.com/RohmanBenyRiyanto/Tugas-Git-Alterra-Academy).
 
 ## 1. Buat Sebuah Repository GIthub 
 
