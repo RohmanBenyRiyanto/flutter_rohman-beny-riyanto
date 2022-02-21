@@ -33,7 +33,7 @@
 
 
 ```dart
-//Value di berdasarkan value yang sudah di deklarasikan
+//Value berdasarkan value yang sudah di deklarasikan
 void main() {
   double value, area;
   value = 10;
