@@ -8,7 +8,7 @@
   import 'dart:io';
   import 'dart:math' show pi;
 
-  //Value di berdasarkan Inputan dari console
+  //Value berdasarkan Inputan dari console
   void main() {
   double area;
 
