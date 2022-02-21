@@ -8,7 +8,7 @@
 ## 1. Apa itu pengembangan aplikasi seluler? 
 Pengembangan aplikasi seluler adalah proses pembuatan perangkat lunak untuk smartphone dan asisten digital, paling umum untuk Android dan iOS. Perangkat lunak ini dapat diinstal sebelumnya pada perangkat, diunduh dari toko aplikasi seluler atau diakses melalui browser web seluler. Bahasa pemrograman dan markup yang digunakan untuk pengembangan perangkat lunak semacam ini termasuk Java, Swift, C# dan HTML5.
 
-## 2. Jenis software yang dapat digunakan untuk pengambangan aplikasi seluler.
+## 2. Jenis software.
 - Web <br> Diakses menggunakan web browser dan memerlukan internet untuk mengaksesnya.
 - Desktop <br> Desktop adalah perangkat yang hanya berjalan pada perangkat desktop, pada umumnya memerlukan langkah awal seperti instalasi. Jenis ini dapat berjalan tanpa terhubung pada internet.
 - Mobile Aplikasi <br> Aplikasi mobile (Mobile Apps) yaitu aplikasi yang dibuat untuk perangkat-perangkat bergerak (Mobile) seperti : Smartphone, SmartWatch, Tablet, dan lainnya. Perangkat lunak atau disebut juga software aplikasi merupakan hasil dari pemrograman mobile yang dirancang menggunakan bahasa pemrograman tertentu. Untuk formatnya pada android adalah apk sedangkan pada IOS adalah ipa.
