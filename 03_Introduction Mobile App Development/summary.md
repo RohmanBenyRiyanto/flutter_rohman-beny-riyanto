@@ -30,3 +30,13 @@ Adapun beberapa bahasa pemrograman yang pengembang aplikasi seluler sering gunak
 - Dart <br> Dart merupakan bahasa yang digunakan untuk pengembangan mobile cross platform. Tools yang digunakan pada pemrograman Dart adalah Flutter. Flutter sendiri merupakan salah satu tool mobile terpopuler yang paling banyak digunakan selain react native. [View Dart](https://dart.dev/), [view Flutter](https://flutter.dev/).
 
 Selain daftar bahasa pemrograman terdapat juga Compiler ( Kompilator ) dan Interpreter, apa itu Compiler ? Compiler adalah suatu program yang menerjemahkan bahasa program ( source code) kedalam bahasa objek (obyek code). Compiler menggabungkan keseluruhan bahasa program, mengumpulkannya dan kemudian menyusunnya kembali. Sedangkan Interpreter adalah Interpreter adalah Perangkat lunak yang mampu mengeksekusi code program (yang ditulis oleh programmer) lalu menerjemahkannya ke dalam bahasa mesin, sehingga mesin melakukan instruksi yang diminta oleh programmer tersebut. Perintah-perintah yang dibuat oleh programmer tersebut dieksekusi baris demi baris, sambil mengikuti logika yang terdapat di dalam kode tersebut.
+
+# Task
+Pada task ini, membuat daftar bahasa pemrograman untuk mobile development. Selain daftar bahasa pemrograman, juga membuat daftar aplikasi yang hanya ada pada IOS dan Android.
+
+Berikut dokumen hasil dari praktikum ini.
+[view](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/03_Introduction%20Mobile%20App%20Development/praktikum)
+
+Output :
+
+![(3) Praktikum – Introduction Mobile App Development](https://user-images.githubusercontent.com/72520643/155077277-d6d4e54f-f2a8-4af9-90be-c387e5a7a960.png)
