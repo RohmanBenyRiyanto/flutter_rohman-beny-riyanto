@@ -5,7 +5,7 @@
 |--|--|
 | Rohman Beny Riyanto  |  Flutter A
 
-## Hasil Resume
+## Hasil Resume :
 
 ### 1. Fundamental
 
