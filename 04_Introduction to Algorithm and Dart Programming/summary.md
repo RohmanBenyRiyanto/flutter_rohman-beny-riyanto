@@ -88,7 +88,7 @@ Ada 6 kelompok operator dalam dart :
 # Task
 Pada task ini, membuat sebuah program menggunakan bahasa dart untuk menghitung luas lingkarang.
 
-Berikut dokumen hasil dari praktikum ini.<br>
+Berikut hasil dari praktikum ini.<br>
 [View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/04_Introduction%20to%20Algorithm%20and%20Dart%20Programming/praktikum/praktikum_introduction_to_algorithm_and_dart_programming/bin/main.dart)<br>
 [View Screenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/04_Introduction%20to%20Algorithm%20and%20Dart%20Programming/screenshot)<br>
 [Live Run](https://replit.com/@ROHMANBENYRIYAN/Luas-Lingkarang#main.dart)
