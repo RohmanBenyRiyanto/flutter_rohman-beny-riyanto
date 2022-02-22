@@ -5,9 +5,6 @@
 |--|--|
 | Rohman Beny Riyanto  |  Flutter A
 
-## Soal
-Tuliskan 3 poin yang dipelajari dari materi tersebut. Resume / ringkasan materi dapat disubmit melalui Github
-
 ## Hasil Resume
 
 ### 1. Fundamental
@@ -41,7 +38,7 @@ Tuliskan 3 poin yang dipelajari dari materi tersebut. Resume / ringkasan materi 
 ###### Hal ini untuk menambahkan keterangan perubahan apa yang kita lakukan pada file tersebut.
 
 #### Menghubungkan ke Server Repository Jarak Jauh
-`git remote add origin https://github.com/linuxsecorg/linuxsecorg`
+`git remote add origin https://github.com/nickname/namarepo`
 ###### Hal ini dilakukan agar kamu bisa mengirimkan perubahan ke server jarak-jauh yang dituju.
 
 #### Mengirim Perubahan ke Repository jarak Jauh
@@ -57,7 +54,7 @@ Tuliskan 3 poin yang dipelajari dari materi tersebut. Resume / ringkasan materi 
 ###### Hal ini untuk melihat perubahan apa saja yang telah dilakukan pada file. Outputnya adalah keterangan yang kita masukkan pada commit. Itulah kenapa ngisi commit harus jelas, jangan ngasal. hehe.
 
 #### Menyalin repository ke lokal
-`git clone  https://github.com/linuxsecorg/linuxsecorg.git`
+`git clone  https://github.com/nickname/namarepo.git`
 ###### Ini ditujukan untuk menyalin sebuah repository publik ke lokal. Misalnya repository milik orang lain yang berisi source code dan bersifat publik.
 
 #### Untuk perintah perintah lain bisa cek menggunakan perintah
@@ -70,6 +67,12 @@ Tuliskan 3 poin yang dipelajari dari materi tersebut. Resume / ringkasan materi 
 * Mudah mencari bantuan
 
 # Task
+
+Pada task ini, membuat sebuah repository github dan mengimplementasikan github branching. Selain itu juga terdapat pengimplementasian instruksi git, penanganan konflik dan menggunakan merge no fast forward
+
+Berikut kode hasil dari praktikum ini.
+
+[View Repository](https://github.com/RohmanBenyRiyanto/Tugas-Git-Alterra-Academy)
 
 ## 1. Buat Sebuah Repository GIthub 
 
