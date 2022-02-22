@@ -70,7 +70,7 @@
 
 Pada task ini, membuat sebuah repository github dan mengimplementasikan github branching. Selain itu juga terdapat pengimplementasian instruksi git, penanganan konflik dan menggunakan merge no fast forward
 
-Berikut kode hasil dari praktikum ini.
+Berikut repository hasil dari praktikum ini.
 
 [View Repository](https://github.com/RohmanBenyRiyanto/Tugas-Git-Alterra-Academy)
 
