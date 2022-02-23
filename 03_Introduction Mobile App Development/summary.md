@@ -35,8 +35,9 @@ Selain daftar bahasa pemrograman terdapat juga Compiler ( Kompilator ) dan Inter
 # Task
 Pada task ini, membuat daftar bahasa pemrograman untuk mobile development. Selain daftar bahasa pemrograman, juga membuat daftar aplikasi yang hanya ada pada IOS dan Android.
 
-Berikut dokumen hasil dari praktikum ini.
-[view](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/03_Introduction%20Mobile%20App%20Development/praktikum)
+Berikut dokumen hasil dari praktikum ini.<br>
+[Live view](https://docs.google.com/document/d/1lhwZUM0uD1EFdQtjcFFrmRzTGgyfMTzM0RdtCG96uV4/edit?usp=sharing)<br>
+[Download docs file](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/03_Introduction%20Mobile%20App%20Development/praktikum)
 
 Output :
 
