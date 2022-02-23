@@ -99,19 +99,27 @@ Berikut hasil dari praktikum ini.<br>
 
 ```dart
   import 'dart:io';
+  // Mathematical library
   import 'dart:math' show pi;
 
   //Value berdasarkan Inputan dari console
   void main() {
+  // variable area mengguanakn tipe data double
   double area;
 
+  // Menampilkan data string
   print('Masukkan panjang jari-jari lingkaran: ');
+  // Membaca inputan dari console
   var num1 = stdin.readLineSync();
+  // merubah num1 (inputan dari console) menjadi bertipe data double 
   var num2 = double.parse(num1!);
 
+  // Melakukan perkalian 3.14 * value * value
   area = pi * num2 * num2;
+  // Menjadikan hasil perkalian dari double menjadi string dengan nilai di belakang koma 2 digit
   String number = area.toStringAsFixed(2);
   
+  // Menampilkan hasil luas lingkaran
   print('Luas lingkaran adalah $number')
 }
 ```
@@ -130,12 +138,17 @@ Berikut hasil dari praktikum ini.<br>
 ```dart
 //Value berdasarkan value yang sudah di deklarasikan
 void main() {
+  // variable value dan area mengguanakn tipe data double
   double value, area;
-  value = 10;
+  // Menambahkan expression pada variable value bertype double dengan nilai 10.0
+  value = 10.0;
 
+  // Melakukan perkalian 3.14 * value * value
   area = pi * value * value;
+  // Menjadikan hasil perkalian dari double menjadi string dengan nilai di belakang koma 2 digit
   String number = area.toStringAsFixed(2);
   
+  // Menampilkan hasil luas lingkaran
   print('Luas lingkaran adalah $number');
 }
 ```
