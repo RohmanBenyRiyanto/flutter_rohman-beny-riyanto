@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:math' show pi;
 
-/*Value di berdasarkan value yang sudah
+/*Value berdasarkan value yang sudah
   di deklarasikan*/
 // void main() {
 //   double value, area;
@@ -11,7 +11,7 @@ import 'dart:math' show pi;
 //   print('Luas lingkaran adalah $area');
 // }
 
-//Value di berdasarkan Inputan dari console
+//Value berdasarkan Inputan dari console
 void main() {
   double area;
 
