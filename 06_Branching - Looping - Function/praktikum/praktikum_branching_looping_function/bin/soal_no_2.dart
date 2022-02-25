@@ -1,18 +1,7 @@
-import 'dart:io';
+int faktorial(int n) => n == 0 ? 1 : n * faktorial(n - 1);
 
 void main() {
-  var factorial = 1;
-  print('Masukkan bilangan bulat : ');
-  int? n = int.parse(stdin.readLineSync()!);
-  if (n < 0) {
-    print('Angka yang dimasukkan bukan bilangan bulat');
-  } else {
-    for (var i = 1; i <= n; i++) {
-      factorial *= i;
-    }
-    print('Hasil faktorial dari ' +
-        n.toString() +
-        ' adalah ' +
-        factorial.toString());
+  for (int? i = 10; i! <= 30; i += 10) {
+    print(' Hasil dari faktorial $i adalah : ${faktorial(i)}\n');
   }
 }
