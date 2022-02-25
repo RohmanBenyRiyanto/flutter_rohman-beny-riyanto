@@ -1,19 +1,18 @@
 # (6) Branching - Looping - Function
 
-Pada task ini, membuat sebuah program menggunakan bahasa dart untuk menyelesaikan persoalan. Persoalan satu adalah menentutkan nilai, persoalan dua menampilkan factorial.
+# Task :
+Pada task ini terdapat dua soal, yang pertama adalah membuat sebuah program penilaian menggunakan if else dan yang kedua adalah membuat perhitungan faktorial.
 
-Berikut hasil dari praktikum ini.<br>
-[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/06_Branching%20-%20Looping%20-%20Function/praktikum/praktikum_branching_looping_function)<br>
-[View Screenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/06_Branching%20-%20Looping%20-%20Function/screenshot)
+Berikut hasil dari praktikum ini :<br>
+1. [View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/06_Branching%20-%20Looping%20-%20Function/praktikum/praktikum_branching_looping_function)
 
-## 1. Soal Nomor 1 Menentukan nilai
+2. [View Screenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/06_Branching%20-%20Looping%20-%20Function/screenshot)
 
-### a. Cara 1 Menggunakan Input Console
+## 1. Soal nomor 1
 
-#### Source Code :
-
+### Source Code :
 ```dart
- void main() {
+void main() {
   var nilai = 86;
   if (nilai >= 70) {
     print('Nilai Anda A');
@@ -27,50 +26,34 @@ Berikut hasil dari praktikum ini.<br>
 }
 ```
 
-#### Output :
-```PowerShell
-Connecting to VM Service at http://127.0.0.1:54766/2RA3LVhTbhk=/
+### Output :
+```powershell
+Connecting to VM Service at http://127.0.0.1:60371/T3kMFprZY7k=/
 Nilai Anda A
 Exited
-
 ```
-## 2. Soal Nomor 2 menghitung factorial
 
-#### Source Code
+## 2. Soal nomor 2
+### Source Code :
 ```dart
-import 'dart:io';
+int faktorial(int n) => n == 0 ? 1 : n * faktorial(n - 1);
 
 void main() {
-  var factorial = 1;
-  print('Masukkan bilangan bulat : ');
-  int? n = int.parse(stdin.readLineSync()!);
-  if (n < 0) {
-    print('Angka yang dimasukkan bukan bilangan bulat');
-  } else {
-    for (var i = 1; i <= n; i++) {
-      factorial *= i;
-    }
-    print('Hasil faktorial dari ' +
-        n.toString() +
-        ' adalah ' +
-        factorial.toString());
+  for (int? i = 10; i! <= 30; i += 10) {
+    print(' Hasil dari faktorial $i adalah : ${faktorial(i)}\n');
   }
 }
 ```
 
-#### Output :
-```PowerShell
-PS D:\Kampus Merdeka\Alterra Academy\Tugas\flutter_rohman-beny-riyanto\06_Branching - Looping - Function\praktikum\praktikum_branching_looping_function\bin> dart soal_no_2.dart
-Masukkan bilangan bulat : 
-10
-Hasil faktorial dari 10 adalah 3628800
-PS D:\Kampus Merdeka\Alterra Academy\Tugas\flutter_rohman-beny-riyanto\06_Branching - Looping - Function\praktikum\praktikum_branching_looping_function\bin> dart soal_no_2.dart
-Masukkan bilangan bulat : 
-20
-Hasil faktorial dari 20 adalah 2432902008176640000
-PS D:\Kampus Merdeka\Alterra Academy\Tugas\flutter_rohman-beny-riyanto\06_Branching - Looping - Function\praktikum\praktikum_branching_looping_function\bin> dart soal_no_2.dart
-Masukkan bilangan bulat : 
-30
-Hasil faktorial dari 30 adalah -8764578968847253504
-PS D:\Kampus Merdeka\Alterra Academy\Tugas\flutter_rohman-beny-riyanto\06_Branching - Looping - Function\praktikum\praktikum_branching_looping_function\bin> 
+### Output :
+```powershell
+Connecting to VM Service at http://127.0.0.1:61011/HstxGaCC6no=/
+ Hasil dari faktorial 10 adalah : 3628800
+
+ Hasil dari faktorial 20 adalah : 2432902008176640000
+
+ Hasil dari faktorial 30 adalah : -8764578968847253504
+
+Exited
+
 ```
