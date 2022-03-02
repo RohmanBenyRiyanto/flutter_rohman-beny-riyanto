@@ -36,10 +36,10 @@ Exited
 ## 2. Soal nomor 2
 ### Source Code :
 ```dart
-int faktorial(int n) => n == 0 ? 1 : n * faktorial(n - 1);
+double faktorial(double n) => n == 0 ? 1 : n * faktorial(n - 1);
 
 void main() {
-  for (int? i = 10; i! <= 30; i += 10) {
+  for (double? i = 10; i! <= 30; i += 10) {
     print(' Hasil dari faktorial $i adalah : ${faktorial(i)}\n');
   }
 }
@@ -47,12 +47,12 @@ void main() {
 
 ### Output :
 ```powershell
-Connecting to VM Service at http://127.0.0.1:61011/HstxGaCC6no=/
- Hasil dari faktorial 10 adalah : 3628800
+Connecting to VM Service at http://127.0.0.1:50029/Fpvubvcbs4c=/
+ Hasil dari faktorial 10.0 adalah : 3628800.0
 
- Hasil dari faktorial 20 adalah : 2432902008176640000
+ Hasil dari faktorial 20.0 adalah : 2432902008176640000.0
 
- Hasil dari faktorial 30 adalah : -8764578968847253504
+ Hasil dari faktorial 30.0 adalah : 2.6525285981219103e+32
 
 Exited
 
