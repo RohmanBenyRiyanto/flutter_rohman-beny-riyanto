@@ -56,7 +56,7 @@ Berikut hasil dari praktkum ini :
 import 'dart:io';
 
 class Hewan {
-  double berat = 100.0;
+  double? berat = 20.0;
 }
 
 class Mobil {
@@ -106,7 +106,7 @@ class Mobil {
 void main() {
   var mobils = Mobil();
 
-  print('Total Berat hewan adalah : ${Hewan().berat}');
+  print('Total Berat hewan adalah : ${Hewan().berat! * mobils.hewan.length}');
   print('Daftar hewan : ${mobils.hewan}\n');
 
   stdout.write('Menambahkan muatan?(y/n) : ');
@@ -121,7 +121,6 @@ void main() {
     print('error\n');
   }
 }
-
 ```
 
 ### Output :
@@ -133,7 +132,7 @@ void main() {
 import 'dart:io';
 
 class Hewan {
-  double berat = 100.0;
+  double? berat = 20.0;
 }
 
 class Mobil {
@@ -188,7 +187,7 @@ class Mobil {
 void main() {
   var mobils = Mobil();
 
-  print('Total Berat hewan adalah : ${Hewan().berat}');
+  print('Total Berat hewan adalah : ${Hewan().berat! * mobils.hewan.length}');
   print('Daftar hewan : ${mobils.hewan}\n');
 
   stdout.write('Menambahkan muatan?(y/n) : ');
