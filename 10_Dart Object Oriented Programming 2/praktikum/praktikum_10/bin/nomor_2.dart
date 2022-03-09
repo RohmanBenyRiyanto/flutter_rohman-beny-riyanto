@@ -1,10 +1,13 @@
 class Matematika {
-  hasil() => 2 + 2;
+  // Method hasil
+  hasil() => print('Section 10');
 }
 
 class KelipatanPersekutuanTerkecil implements Matematika {
+  // Property
   var x, y, i;
 
+  // Method hasil
   @override
   hasil() {
     if (x! > y!) {
