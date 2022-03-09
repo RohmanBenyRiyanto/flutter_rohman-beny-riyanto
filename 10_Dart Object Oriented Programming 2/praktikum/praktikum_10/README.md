@@ -9,7 +9,7 @@ Berikut hasil dari praktikum ini :
 ## Soal Nomor 1
 
 ### Source Code :
-```dart'
+```dart
 class BangunRuang {
   // Property  panjang, lebar, tinggi, volume (Bertype Integer)
   int? panjang;
