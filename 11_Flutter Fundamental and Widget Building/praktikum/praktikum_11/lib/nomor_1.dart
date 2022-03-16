@@ -9,20 +9,21 @@ class Clock extends StatefulWidget {
 }
 
 class _ClockState extends State<Clock> {
-  String? _now;
-  // ignore: unused_field
-  Timer? _everySecond;
+  late String _timeString;
 
   @override
   void initState() {
+    _timeString =
+        "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getCurrentTime());
     super.initState();
-    _now = _timeToString(DateTime.now());
   }
 
-  String? _timeToString(DateTime now) {
-    String timeString =
-        "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:${now.second.toString().padLeft(2, '0')}";
-    return timeString;
+  void _getCurrentTime() {
+    setState(() {
+      _timeString =
+          "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+    });
   }
 
   @override
@@ -49,7 +50,7 @@ class _ClockState extends State<Clock> {
               ),
               const SizedBox(height: 16),
               Text(
-                _now!,
+                _timeString,
                 style: const TextStyle(
                   fontSize: 24,
                 ),
@@ -61,3 +62,5 @@ class _ClockState extends State<Clock> {
     );
   }
 }
+
+
