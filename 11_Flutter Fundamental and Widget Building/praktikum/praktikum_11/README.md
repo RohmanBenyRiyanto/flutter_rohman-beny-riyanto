@@ -1,16 +1,133 @@
-# praktikum_11
+# Task
+Pada task ini terdapat 2 (dua) soal yang menggunakan satu study kasus, yaitu membuat sebuah aplikasi mobile menggunakan flutter yang tampilanya dapat berubah setiap detik.
 
-A new Flutter project.
+Berikut hasil dari task ini :
 
-## Getting Started
+[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/11_Flutter%20Fundamental%20and%20Widget%20Building/praktikum/praktikum_11)<br>
+[View Screenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/11_Flutter%20Fundamental%20and%20Widget%20Building/screenshot)
 
-This project is a starting point for a Flutter application.
+## Nomor 1
+Membuat tampilan statefull widget yang dapat berubah setiap detiknya.
 
-A few resources to get you started if this is your first Flutter project:
+### Source Code :
+```dart
+// Deklarasi properti timeString (private)
+late String _timeString;
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+// Membuat state
+@override
+void initState() {
+  _timeString =
+    "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getCurrentTime());
+    super.initState();
+}
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+void _getCurrentTime() {
+    setState(() {
+    _timeString =
+        "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+  });
+}
+
+// Menampilkan method
+Column(
+mainAxisAlignment: MainAxisAlignment.center,
+crossAxisAlignment: CrossAxisAlignment.center,
+children: [
+    Text(
+        ('Indonesia Time'.toUpperCase()),
+        style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+            ),
+        ),
+        const SizedBox(height: 16),
+        text(
+        _timeString,
+        style: const TextStyle(
+            fontSize: 24,
+        ),
+        ),
+    ],
+),
+```
+
+## Nomor 2
+Melakukan Spliting widget namun tidak merubah tampilanya.
+
+### Source Code :
+```dart
+// Deklarasi properti timeString (private)
+late String _timeString;
+
+// Membuat state
+@override
+void initState() {
+_timeString =
+    "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getCurrentTime());
+    super.initState();
+}
+
+void _getCurrentTime() {
+    setState(() {
+    _timeString =
+    "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+  });
+}
+
+// Menampilkan widget
+Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+            const Heading(),
+            const SizedBox(height: 16),
+            Time(timeString: _timeString,
+            ),
+        ],
+    ),
+
+
+// Split widget time, di dalamnya terdapat constructor timeString
+class Time extends StatelessWidget {
+  const Time({
+    Key? key,
+    required String timeString,
+  }) : _timeString = timeString, super(key: key);
+
+  final String _timeString;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _timeString,
+      style: const TextStyle(
+        fontSize: 24,
+      ),
+    );
+  }
+}
+
+// Split widget header menampilkan "Indonesia Time"
+class Heading extends StatelessWidget {
+  const Heading({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      ('Indonesia Time'.toUpperCase()),
+      style: const TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+      ),
+    );
+  }
+}
+```
+
+## Output :
+![Output](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/11_Flutter%20Fundamental%20and%20Widget%20Building/screenshot/Output.png)
