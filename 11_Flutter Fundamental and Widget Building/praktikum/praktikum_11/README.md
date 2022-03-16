@@ -130,4 +130,4 @@ class Heading extends StatelessWidget {
 ```
 
 ## Output :
-![Output](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/11_Flutter%20Fundamental%20and%20Widget%20Building/screenshot/Output.png)
+https://user-images.githubusercontent.com/72520643/158541733-8cafb60a-cb01-4e43-921f-3e8485982da0.mp4
