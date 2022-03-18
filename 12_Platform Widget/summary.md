@@ -20,5 +20,16 @@ Pada task ini saya melakukan clone aplikasi telegram dan whatsapp menggunakan st
 
 berikut hasil dari praktikum ini :
 
-[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/11_Flutter%20Fundamental%20and%20Widget%20Building/praktikum/praktikum_11)<br>
-[View Output]()
+[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/12_Platform%20Widget/praktikum)<br>
+[View Output](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/12_Platform%20Widget/screenshot)
+
+## Nomor 1.
+Pada task pertama ini saya membuat telegram dengan style dari Material App, untuk source karena terlalu panjang dapat di lihat pada tautan berikut : [view](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/12_Platform%20Widget/praktikum/task_1)
+
+### Output :
+
+
+## Nomor 2
+Task kedua ini saya melakukan clone aplikasi whatsapp menggunakan style IOS, pada flutter style ios dapat saya dapatkan menggunakna cupertino. berikut untuk source code dari task dua ini : [view](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/12_Platform%20Widget/praktikum/task_2)
+
+### Output :
