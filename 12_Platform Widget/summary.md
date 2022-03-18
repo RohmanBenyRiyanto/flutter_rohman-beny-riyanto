@@ -1,4 +1,4 @@
-# (11) Introduction Flutter Widget
+# (12) Platform Widget
 
 | NAMA |  KELAS
 |--|--|
@@ -20,5 +20,5 @@ Pada task ini saya melakukan clone aplikasi telegram dan whatsapp menggunakan st
 
 berikut hasil dari praktikum ini :
 
-[View Program]()<br>
+[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/11_Flutter%20Fundamental%20and%20Widget%20Building/praktikum/praktikum_11)<br>
 [View Output]()
