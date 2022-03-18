@@ -56,7 +56,7 @@ class _ChatCardState extends State<ChatCard> {
       ),
       key: UniqueKey(),
       child: Container(
-        margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+        margin: const EdgeInsets.only(top: 16.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
         ),
@@ -141,7 +141,7 @@ class _ChatCardState extends State<ChatCard> {
                                   padding: const EdgeInsets.all(5.0),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Color(0xFF80ba62),
+                                    color: Color(0xFF007AFF),
                                   ),
                                   child: Center(
                                     child: Text(
