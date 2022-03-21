@@ -9,7 +9,7 @@ class BarcodePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'BarcodePag Page',
+          'Barcode Page',
         ),
       ),
       body: Center(
