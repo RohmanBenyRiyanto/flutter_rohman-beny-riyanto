@@ -22,7 +22,7 @@ class BarcodePage extends StatelessWidget {
                 flex: 1,
                 child: BarcodeWidget(
                   barcode: Barcode.code128(
-                      escapes: true), // BarcodePag type and settings
+                      escapes: true), // Barcode type and settings
                   data: 'Alterra Academy', // Content
                 ),
               ),
@@ -31,7 +31,7 @@ class BarcodePage extends StatelessWidget {
                 flex: 1,
                 child: BarcodeWidget(
                   barcode: Barcode.code128(
-                      escapes: true), // BarcodePag type and settings
+                      escapes: true), // Barcode type and settings
                   data: 'Fluter Asik', // Content
                 ),
               ),
@@ -40,7 +40,7 @@ class BarcodePage extends StatelessWidget {
                 flex: 1,
                 child: BarcodeWidget(
                   barcode: Barcode.code128(
-                      escapes: true), // BarcodePag type and settings
+                      escapes: true), // Barcode type and settings
                   data: 'Rohman Beny Riyanto', // Content
                 ),
               ),

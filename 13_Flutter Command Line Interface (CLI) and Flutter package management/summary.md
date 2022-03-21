@@ -9,7 +9,7 @@
 Flutter CLI adalah mekanisme interaksi dengan sistem operasi atau perangkat lunak komputer dengan mengetikkan perintah untuk menjalankan tugas tertentu.
 
 ### 2. Contoh Flutter CLI
-```dart
+```powershell
 //Berikut adalah cara Anda dapat menggunakan flutter cli ini untuk membuat, menganalisis, menguji, dan menjalankan aplikasi:
  flutter create my_app
  cd my_app
@@ -96,3 +96,40 @@ Pada task pertama ini saya menggunakan package yang tersedia pada pub.dev, packa
 
 ![images](screenshot/Output_Task_1.png)
 ## Nomor 2
+Pada task kedua ini saya menggunakan package yang tersedia pada pub.dev, package yang saya gunakan adalah barcode. Berikut hasil dari task 2 : [view](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/13_Flutter%20Command%20Line%20Interface%20(CLI)%20and%20Flutter%20package%20management/praktikum/task_section_13/lib/task_2.dart)
+
+### Source Code : 
+```dart
+// Mendaftarkan package pada pubspec.yaml
+   barcode_widget: <version>
+// Melakukan import package pada class atau page yang akan menggunakan package
+   import 'package:barcode_widget/barcode_widget.dart';
+
+// Penggunaan Package barcode
+    Flexible(
+    flex: 1,
+    child: BarcodeWidget(
+    barcode: Barcode.code128(escapes: true), // Barcode type and settings
+     data: 'Alterra Academy', // Content
+    ),
+),
+    const SizedBox(height: 20),
+    Flexible(
+    flex: 1,
+    child: BarcodeWidget(
+    barcode: Barcode.code128(escapes: true), // Barcode type and settings
+    data: 'Fluter Asik', // Content
+    ),
+),
+    const SizedBox(height: 20),
+    Flexible(
+    flex: 1,
+    child: BarcodeWidget(
+    barcode: Barcode.code128(escapes: true), // Barcode type and settings
+    data: 'Rohman Beny Riyanto', // Content
+    ),
+),
+```
+
+### Output :
+![task 2](screenshot/Output_Task_2.png)
