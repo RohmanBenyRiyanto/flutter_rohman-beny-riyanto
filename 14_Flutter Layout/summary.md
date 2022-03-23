@@ -122,4 +122,4 @@ data, makan akan menampikan CircularProgressIndicator*/
 ```
 
 ### Output : 
-![Output Task 2]([screenshot/Output%20Task%202.png](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/14_Flutter%20Layout/screenshot/Output%20Task%202.png))
+![Output Task 2](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/14_Flutter%20Layout/screenshot/Output%20Task%202.png)
