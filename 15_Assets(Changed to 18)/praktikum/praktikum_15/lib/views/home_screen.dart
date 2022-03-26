@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart' as http;
-import 'package:praktikum_15/model.dart';
+import 'package:praktikum_15/Models/model.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 import '../theme/theme.dart';

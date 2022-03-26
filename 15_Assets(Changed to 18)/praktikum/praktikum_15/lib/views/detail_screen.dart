@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:praktikum_15/model.dart';
+import 'package:praktikum_15/Models/model.dart';
 
 import '../theme/theme.dart';
 
