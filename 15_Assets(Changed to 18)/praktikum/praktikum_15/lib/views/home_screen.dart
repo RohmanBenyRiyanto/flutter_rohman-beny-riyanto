@@ -106,28 +106,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ));
   }
 
-  // Widget content() {
-  //   return GestureDetector(
-  //     onTap: () {},
-  //     child: Container(
-  //         margin: EdgeInsets.only(top: 20.0, left: defaultMargin),
-  //         child: StaggeredGridView.countBuilder(
-  //           shrinkWrap: true,
-  //           physics: const NeverScrollableScrollPhysics(),
-  //           crossAxisCount: 4,
-  //           itemCount: data == null ? 0 : data!.length,
-  //           itemBuilder: (BuildContext context, int index) => Image.network(
-  //             data![index]['urls']['small'],
-  //             fit: BoxFit.cover,
-  //           ),
-  //           staggeredTileBuilder: (int index) =>
-  //               StaggeredTile.count(2, index.isEven ? 2 : 1),
-  //           mainAxisSpacing: 4.0,
-  //           crossAxisSpacing: 4.0,
-  //         )),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
