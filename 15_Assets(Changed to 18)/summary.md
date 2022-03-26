@@ -130,7 +130,7 @@ final List<ImageModel> ImageUrl = List.generate(
 ```
 
 ### Output :
-![](/screenshot/Home%20Page.jpg)
+![](https://raw.githubusercontent.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/main/15_Assets(Changed%20to%2018)/screenshot/Home%20Page.jpg?token=GHSAT0AAAAAABRYPG72JYBHNP7ROXGAWOR4YSIKIRQ)
 
 ## 1. Task Nomor 2
 Pada task kedua ini saya membuat agar gambar berpindah pada halaman baru ketika di tekan, gambar pun akan di tampikan pada halaman baru dengan ukuran sebesar layar.
@@ -171,4 +171,4 @@ Center(
 ```
 
 ### Output :
-![](/screenshot/Detail%20Page.jpg)
+![](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/15_Assets(Changed%20to%2018)/screenshot/Detail%20Page.jpg)
