@@ -184,3 +184,9 @@ PrimaryButton(
 ```
 
 ## Output :
+
+<img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/16_Form%20Input%20Button/screenshot/Screenshot_2022-03-28-06-45-23-24_db4759be3b8b0db1cbe39746aebd8a99.jpg" width="400">   <img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/16_Form%20Input%20Button/screenshot/Screenshot_2022-03-28-06-46-01-77_db4759be3b8b0db1cbe39746aebd8a99.jpg" width="400">
+
+<img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/16_Form%20Input%20Button/screenshot/Screenshot_2022-03-28-06-46-35-01_db4759be3b8b0db1cbe39746aebd8a99.jpg" width="400">   <img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/16_Form%20Input%20Button/screenshot/Screenshot_2022-03-28-06-45-36-71_db4759be3b8b0db1cbe39746aebd8a99.jpg" width="400">
+
+<img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/16_Form%20Input%20Button/screenshot/Screenshot_2022-03-28-06-45-46-75_db4759be3b8b0db1cbe39746aebd8a99.jpg" width="400">   <img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/16_Form%20Input%20Button/screenshot/Screenshot_2022-03-28-06-45-54-14_db4759be3b8b0db1cbe39746aebd8a99.jpg" width="400">
