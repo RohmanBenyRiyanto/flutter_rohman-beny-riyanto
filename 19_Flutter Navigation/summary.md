@@ -43,3 +43,28 @@ Berikut Hasil dari praktikum ini :
 
 [View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/19_Flutter%20Navigation/praktikum/praktikum_19)<br>
 [View Screenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/19_Flutter%20Navigation/screenshot)
+
+## Penyelesaian
+Pada task ini saya menampilkan halaman contact berisi listview dengan data dari list UserModel, apabila list di tekan akan berpindah pada halaman AddContact(). Berikut code cara penggunanan Navigator.push named
+
+### Source Code :
+
+```dart
+// Mendagtarkan route pada class main di dalam MaterialApp
+return MaterialApp(
+      // Remove the debug banner
+      debugShowCheckedModeBanner: false,
+      title: 'Contact App',
+      initialRoute: '/', // Yang pertama ditampilkan adalah halaman HomePAge().
+      routes: {
+        '/': (context) => const HomePage(),
+        '/add-contact': (context) => const AddContact(),
+      },
+    );
+
+// Penggunaan routes AddContact()
+Navigator.pushNamed(context, '/add-contact').then(_perbaruiData);
+```
+
+### Output :
+<img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/19_Flutter%20Navigation/screenshot/Screenshot_1648806394.png" width="400">   <img src="https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/19_Flutter%20Navigation/screenshot/Screenshot_1648806409.png" width="400">
