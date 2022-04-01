@@ -1,4 +1,4 @@
-# (14) Assets (Change To Section 18)
+# (15) Dialog Bottom Sheet (Change To Section 15)
 | NAMA |  KELAS
 |--|--|
 | Rohman Beny Riyanto  |  Flutter A
@@ -40,13 +40,15 @@ Image.asset('assets/images/nama_gambar.type file'),
 // Gambar dari internet
 Image.network('link gambar');
 ```
+### 4. Dialog Bottom Sheet
+Dialog Bottom Sheet di Flutter digunakan untuk menampilkan konten tambahan sambil membatasi pengguna untuk berinteraksi dengan konten utama aplikasi . Seperti namanya, lembar bawah diposisikan di bagian bawah layar.
 
 # Task 
 Pada task ini saya membuat sebuah gallery aplikasi yang di dalamnya terdapat gambar - gambar dari internet, gambar tersebut saya tampilkan menggunakan GridView. Adapun ketentuan pada task ini seperti, apabila gambar ditekan akan berpindah pada halaman lain dan gambar akan di tampikan pada halaman baru tersebut.
 
 Berikut hasil dari task ini :
-[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/15_Assets(Changed%20to%2018)/praktikum/praktikum_15)<br>
-[View Secreenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/15_Assets(Changed%20to%2018)/screenshot)
+[View Program](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/18_Dialog%20Bottom%20Sheet(Changed%20to%2015)/praktikum/praktikum_18)<br>
+[View Secreenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/18_Dialog%20Bottom%20Sheet(Changed%20to%2015)/screenshot)
 
 ## 1. Task Nomor 1
 Pada task ini saya menampikna gambar dari internet, menggunakan sebuah package StaggeredGridView yang saya dapatkan dari [pub.dev](https://pub.dev). Library ini pada dasarnya sama saja dengan gridview pada umumnya, namun yang menjadi pembeda adalah tata letak dan ukuran gridview ini dapat di costum sedemikian rupa dapat dilihat pada output di bawah ini :
@@ -94,10 +96,8 @@ final List<ImageModel> ImageUrl = List.generate(
           itemBuilder: (BuildContext context, int index) => GestureDetector( /*Gestur decetor untuk melakukan
           perpindaan halaman atau aksi apabila gambar di tekan*/
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      DetailScreen(imageModel: ImageUrl[index]))); /*Berpinda pada halaman baru membawa data
-                      dari list image yang di tekan*/
+            // Menampilkan Bottom Shet apabila gambar ditekan
+              _DetailImages(context, ImageUrl[index].imageUrl);
             },
             // Menampilkan gambar dengan type network karena gambar berupa link
             child: Image.network(
@@ -130,45 +130,102 @@ final List<ImageModel> ImageUrl = List.generate(
 ```
 
 ### Output :
-![image](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/15_Assets(Changed%20to%2018)/screenshot/Home%20Page.jpg)
+![image](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/18_Dialog%20Bottom%20Sheet(Changed%20to%2015)/screenshot/Output%20Gallery.png)
 
-## 1. Task Nomor 2
-Pada task kedua ini saya membuat agar gambar berpindah pada halaman baru ketika di tekan, gambar pun akan di tampikan pada halaman baru dengan ukuran sebesar layar.
+## 2. Task Nomor 2
+Pada task kedua ini saya membuat agar gambar dapat ditampilkan pada dialog bottom shet
 
 ### Source Code :
 ```dart
-// Code di on tap ini terdapat pada class Homepage
-onTap: () {
-    Navigator.of(context).push(MaterialPageRoute(
-    builder: (context) =>
-        DetailScreen(imageModel: ImageUrl[index]))); /*Berpinda pada halaman baru membawa data
-        dari list image yang di tekan*/
-},
-
-// Code pada class Detail Page
-/*Properti image model yang nantinya akan di isi dengan gambar dari
-list pada Home page class ketika DetailScreen di panggil*/
-final ImageModel imageModel;
-
-// Constuctor properti imageModel
-const DetailScreen({
-required this.imageModel,
-});
-
-// Menampikan gambar
-Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(imageModel.imageUrl),
-              fit: BoxFit.cover,
+Future<dynamic> _DetailImages(BuildContext context, String imageUrl) async {
+  return showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: transparentColor,
+    builder: (context) {
+      var checkIsi;
+      return Wrap(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              left: defaultMargin,
+              right: defaultMargin,
+              bottom: defaultMargin,
+            ),
+            padding: const EdgeInsets.all(10.0),
+            // height: displayHeight(context) * 0.6,
+            decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    OutlineIconsButton(
+                      icons: 'assets/icons/left_ios_arrow.svg',
+                      press: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Text(
+                      'Previous Images',
+                      style: headingTextStyle.copyWith(
+                        fontSize: 16.0,
+                        fontWeight: bold,
+                      ),
+                    ),
+                    Container(
+                      height: 35.0,
+                      padding: const EdgeInsets.all(1.5),
+                      child: IconButton(
+                        splashColor: transparentColor,
+                        highlightColor: transparentColor,
+                        icon: SvgPicture.asset(
+                          'assets/icons/add.svg',
+                          color: transparentColor,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  margin: const EdgeInsets.all(
+                    16.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
             ),
           ),
-        ),
-      ),
+        ],
+      );
+    },
+  );
+}
 ```
 
 ### Output :
-![](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/15_Assets(Changed%20to%2018)/screenshot/Detail%20Page.jpg)
+![](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/18_Dialog%20Bottom%20Sheet(Changed%20to%2015)/screenshot/Output%20Botom%20Sheet%20Gallery.png)
