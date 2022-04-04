@@ -7,15 +7,6 @@
 
 ### 1. Apa itu state
 State adalah data yang dapat dibaca saat pembuatan widget, state dapat merubah widget saat sedang aktif. Flutter state pada dasarnya hanya dimiliki oleh stateful widget.
-### 2. Navigation Dasar
-Navigation Dasar dapat digunakan dengan cara sebagai berikut :
-```dart
-// Perpindahan halaman yang di tentukan
-Navigator.push();
-
-// Kembali ke halaman sebelumnya
-Navigator.pop();
-```
 
 ### 2. Global State
 Global State memungkinkan user memasukkan data ke dalam objek global yang dapat diakses dari widget apa pun . Tidak perlu melewati keadaan antara widget yang berbeda. Meskipun global state memungkinkan data untuk dibagikan dan diakses dengan mudah dari widget yang berbeda, state tersebut tidak menggantikan state lokal.
