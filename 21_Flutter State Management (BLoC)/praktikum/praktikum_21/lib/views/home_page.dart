@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:praktikum_16/components/rounded_fill_button.dart';
-import 'package:praktikum_16/providers/contact_providers.dart';
-import 'package:provider/provider.dart';
+import 'package:praktikum_16/bloc/contact_bloc.dart';
+import 'package:praktikum_16/bloc/contact_state.dart';
 
+import '../components/rounded_fill_button.dart';
 import '../components/contact_card.dart';
 import '../components/outline_black_icon_button.dart';
 import '../models/users.dart';
 import '../components/outline_icon_button.dart';
 import '../themes/theme.dart';
-import 'add_contact.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,34 +21,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController? _searchController = TextEditingController();
   String? whatHappened;
-
-  List<User> users = UserList;
-
-  bool checkIsi = true;
-  String _searchText = '';
-
-  @override
-  void initState() {
-    _searchController?.addListener(
-      () {
-        setState(() {
-          _searchText = _searchController!.text;
-        });
-      },
-    );
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _searchController!.dispose();
-    super.dispose();
-  }
-
   AppBar _header(BuildContext context) {
-    final contactProvider = Provider.of<Contact>(context);
     return AppBar(
       backgroundColor: whiteColor,
       elevation: 0,
@@ -94,7 +68,6 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(25),
               ),
               child: TextField(
-                controller: _searchController,
                 style: titleTextStyle.copyWith(
                   fontSize: 14,
                 ),
@@ -135,145 +108,142 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _content(context) {
-    final contactProvider = Provider.of<Contact>(context);
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: defaultMarginBody,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              top: defaultMarginSpace,
-            ),
-            child: Text(
-              'My Contact',
-              style: headingTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: bold,
-              ),
-            ),
+    return BlocBuilder<ContactBloc, ContactState>(
+      builder: (BuildContext context, state) {
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: defaultMarginBody,
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: contactProvider.users.length,
-              itemBuilder: (context, index) {
-                final user = contactProvider.users[index];
-                return Dismissible(
-                  key: Key(user.name),
-                  onDismissed: (direction) {
-                    setState(() {
-                      users.removeAt(index);
-                    });
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: defaultMarginSpace,
+                ),
+                child: Text(
+                  'My Contact',
+                  style: headingTextStyle.copyWith(
+                    fontSize: 18,
+                    fontWeight: bold,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: state.contact!.length,
+                  itemBuilder: (context, index) {
+                    return Dismissible(
+                      key: Key(state.contact![index].name),
+                      direction: DismissDirection.endToStart,
+                      onDismissed: (direction) {
+                        setState(() {
+                          UserList.removeAt(index);
+                        });
 
-                    // ignore: deprecated_member_use
-                    Scaffold.of(context).showSnackBar(
-                      SnackBar(
-                        backgroundColor: redColor,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
+                        // ignore: deprecated_member_use
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: redColor,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
+                            ),
+                            content: Text(
+                              "Kontak berhasil di $whatHappened",
+                              style: whiteTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: medium,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
+                        );
+                      },
+                      background: Expanded(
+                        child: Row(
+                          children: [
+                            Flexible(
+                              flex: 4,
+                              child: Container(),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: Container(
+                                width: displayWidth(context),
+                                decoration: BoxDecoration(
+                                    color: redColor,
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                child: Center(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        'Delete',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        content: Text(
-                          "${user.name} berhasil di $whatHappened",
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: medium,
-                          ),
-                          textAlign: TextAlign.center,
+                      ),
+                      confirmDismiss:
+                          (DismissDirection dismissDirection) async {
+                        switch (dismissDirection) {
+                          case DismissDirection.endToStart:
+                            whatHappened = 'Hapus!';
+                            return await _showConfirmationDialog(
+                                    context, 'Hapus') ==
+                                true;
+                          case DismissDirection.startToEnd:
+                            whatHappened = 'DELETED';
+                            return await _showConfirmationDialog(
+                                    context, 'Delete') ==
+                                true;
+                          case DismissDirection.horizontal:
+                          case DismissDirection.vertical:
+                            break;
+                          case DismissDirection.up:
+                            break;
+                          case DismissDirection.down:
+                            break;
+                          case DismissDirection.none:
+                            break;
+                        }
+                        return false;
+                      },
+                      child: GestureDetector(
+                        onTap: () =>
+                            DetailContact(context, state.contact![index]),
+                        child: ContactCard(
+                          imageURL: state.contact![index].avatar,
+                          name: state.contact![index].name,
+                          phone: state.contact![index].phone,
                         ),
                       ),
                     );
                   },
-                  direction: DismissDirection.endToStart,
-                  background: Expanded(
-                    child: Row(
-                      children: [
-                        Flexible(
-                          flex: 4,
-                          child: Container(),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            width: displayWidth(context),
-                            decoration: BoxDecoration(
-                                color: redColor,
-                                borderRadius: BorderRadius.circular(10.0)),
-                            child: Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Icon(
-                                    Icons.delete,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    'Delete',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  confirmDismiss: (DismissDirection dismissDirection) async {
-                    switch (dismissDirection) {
-                      case DismissDirection.endToStart:
-                        whatHappened = 'Hapus!';
-                        return await _showConfirmationDialog(
-                                context, 'Hapus') ==
-                            true;
-                      case DismissDirection.startToEnd:
-                        whatHappened = 'DELETED';
-                        return await _showConfirmationDialog(
-                                context, 'Delete') ==
-                            true;
-                      case DismissDirection.horizontal:
-                      case DismissDirection.vertical:
-                        break;
-                      case DismissDirection.up:
-                        break;
-                      case DismissDirection.down:
-                        break;
-                      case DismissDirection.none:
-                        break;
-                    }
-                    return false;
-                  },
-                  child: GestureDetector(
-                    onTap: (() {
-                      DetailContact(context, user);
-                    }),
-                    child: ContactCard(
-                      imageURL: _searchController!.text.isNotEmpty
-                          ? contactProvider.usersOnSearch[index].avatar
-                          : user.avatar,
-                      name: _searchController!.text.isNotEmpty
-                          ? user.name
-                          : contactProvider.users[index].name,
-                      phone: _searchController!.text.isNotEmpty
-                          ? contactProvider.usersOnSearch[index].phone
-                          : user.phone,
-                    ),
-                  ),
-                );
-              },
-            ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -335,14 +305,13 @@ Future<bool?> _showConfirmationDialog(BuildContext context, String action) {
 }
 
 Future<dynamic> DetailContact(BuildContext context, User user) {
-  List<User> users = UserList;
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: transparentColor,
     builder: (context) {
+      // ignore: prefer_typing_uninitialized_variables
       var checkIsi;
-      var index;
       return Wrap(
         children: [
           Container(
@@ -401,9 +370,7 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                     color: primaryColor,
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: NetworkImage(
-                        users[index].avatar,
-                      ),
+                      image: NetworkImage(user.avatar),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -412,7 +379,7 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                   height: 10.0,
                 ),
                 Text(
-                  users[index].name,
+                  user.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: headingTextStyle.copyWith(
@@ -421,7 +388,7 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                   ),
                 ),
                 Text(
-                  users[index].phone,
+                  user.phone,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: subtitleTextStyle.copyWith(
@@ -476,10 +443,10 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                             ),
                           ),
                           Text(
-                            users[index].gender!,
+                            user.gender!,
                             style: subtitleTextStyle.copyWith(
                               fontSize: 14.0,
-                              fontWeight: semiBold,
+                              fontWeight: medium,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -491,7 +458,7 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                   ),
                 ),
                 const SizedBox(
-                  height: 16.0,
+                  height: 10.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -512,10 +479,10 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                             ),
                           ),
                           Text(
-                            users[index].status!,
+                            user.status!,
                             style: subtitleTextStyle.copyWith(
                               fontSize: 14.0,
-                              fontWeight: semiBold,
+                              fontWeight: medium,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -525,6 +492,9 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 10.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -549,14 +519,14 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                                   'Hobi Belum Di Isi',
                                   style: subtitleTextStyle.copyWith(
                                     fontSize: 14.0,
-                                    fontWeight: semiBold,
+                                    fontWeight: medium,
                                   ),
                                 )
                               : Text(
-                                  users[index].hobi!,
+                                  user.hobi!,
                                   style: subtitleTextStyle.copyWith(
                                     fontSize: 14.0,
-                                    fontWeight: semiBold,
+                                    fontWeight: medium,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
