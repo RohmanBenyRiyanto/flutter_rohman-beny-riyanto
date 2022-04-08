@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:praktikum_16/bloc/contact_event.dart';
 import 'package:praktikum_16/models/checkbox_model.dart';
 
-import '../bloc/contact_bloc.dart';
-import '../bloc/contact_state.dart';
+import '../bloc/add_contact/contact_bloc.dart';
+import '../bloc/add_contact/contact_event.dart';
+import '../bloc/add_contact/contact_state.dart';
 import '../components/input_text.dart';
 import '../components/outline_icon_button.dart';
 import '../components/primary_button.dart';

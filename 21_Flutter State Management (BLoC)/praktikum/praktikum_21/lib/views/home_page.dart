@@ -3,9 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:praktikum_16/bloc/contact_bloc.dart';
-import 'package:praktikum_16/bloc/contact_state.dart';
+import 'package:praktikum_16/bloc/delete_contact/delete_contact_bloc.dart';
+import 'package:praktikum_16/bloc/delete_contact/delete_contact_event.dart';
+import 'package:praktikum_16/bloc/delete_contact/delete_contact_state.dart';
 
+import '../bloc/add_contact/contact_bloc.dart';
+import '../bloc/add_contact/contact_state.dart';
 import '../components/rounded_fill_button.dart';
 import '../components/contact_card.dart';
 import '../components/outline_black_icon_button.dart';
@@ -109,7 +112,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _content(context) {
     return BlocBuilder<ContactBloc, ContactState>(
-      builder: (BuildContext context, state) {
+      builder: (BuildContext ctx, state) {
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: defaultMarginBody,
@@ -132,100 +135,13 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: ListView.builder(
                   itemCount: state.contact!.length,
-                  itemBuilder: (context, index) {
+                  itemBuilder: (ctx, index) {
                     return Dismissible(
-                      key: Key(state.contact![index].name),
-                      direction: DismissDirection.endToStart,
+                      key: UniqueKey(),
                       onDismissed: (direction) {
-                        setState(() {
-                          UserList.removeAt(index);
-                        });
-
-                        // ignore: deprecated_member_use
-                        Scaffold.of(context).showSnackBar(
-                          SnackBar(
-                            backgroundColor: redColor,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
-                            ),
-                            content: Text(
-                              "Kontak berhasil di $whatHappened",
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: medium,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                      },
-                      background: Expanded(
-                        child: Row(
-                          children: [
-                            Flexible(
-                              flex: 4,
-                              child: Container(),
-                            ),
-                            Flexible(
-                              flex: 1,
-                              child: Container(
-                                width: displayWidth(context),
-                                decoration: BoxDecoration(
-                                    color: redColor,
-                                    borderRadius: BorderRadius.circular(10.0)),
-                                child: Center(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Icon(
-                                        Icons.delete,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(height: 5),
-                                      Text(
-                                        'Delete',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12.0,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      confirmDismiss:
-                          (DismissDirection dismissDirection) async {
-                        switch (dismissDirection) {
-                          case DismissDirection.endToStart:
-                            whatHappened = 'Hapus!';
-                            return await _showConfirmationDialog(
-                                    context, 'Hapus') ==
-                                true;
-                          case DismissDirection.startToEnd:
-                            whatHappened = 'DELETED';
-                            return await _showConfirmationDialog(
-                                    context, 'Delete') ==
-                                true;
-                          case DismissDirection.horizontal:
-                          case DismissDirection.vertical:
-                            break;
-                          case DismissDirection.up:
-                            break;
-                          case DismissDirection.down:
-                            break;
-                          case DismissDirection.none:
-                            break;
-                        }
-                        return false;
+                        List<User> list = state.contact!;
+                        BlocProvider.of<DeleteContactBloc>(context)
+                            .add(DeleteContacts(list[index]));
                       },
                       child: GestureDetector(
                         onTap: () =>

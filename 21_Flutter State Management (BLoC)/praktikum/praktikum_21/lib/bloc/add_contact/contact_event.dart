@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../models/users.dart';
+import '../../models/users.dart';
 
 abstract class ContactEvent extends Equatable {
   @override
@@ -17,3 +17,4 @@ class AddContacts extends ContactEvent {
 
   AddContacts(this.contact);
 }
+

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../models/users.dart';
+import '../../models/users.dart';
+
 
 class ContactState extends Equatable {
   final List<User>? contact;
@@ -11,4 +12,6 @@ class ContactState extends Equatable {
 
   @override
   List<Object?> get props => [contact];
+
+  get contacts => null;
 }
