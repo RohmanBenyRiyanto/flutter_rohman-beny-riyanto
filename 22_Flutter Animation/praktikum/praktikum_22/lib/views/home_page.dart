@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:praktikum_16/bloc/delete_contact/delete_contact_bloc.dart';
 import 'package:praktikum_16/bloc/delete_contact/delete_contact_event.dart';
-import 'package:praktikum_16/bloc/delete_contact/delete_contact_state.dart';
 import 'package:praktikum_16/views/add_contact.dart';
 import 'package:praktikum_16/views/animated_image.dart';
 
@@ -41,22 +40,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             OutlineIconsButton(
               icons: 'assets/icons/dashboard.svg',
-              press: () {
-                Navigator.of(context).push(
-                  PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) {
-                      return const ImageAnimation();
-                    },
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      );
-                    },
-                  ),
-                );
-              },
+              press: () {},
             ),
             Text(
               'Contact',
@@ -338,6 +322,7 @@ Future<bool?> _showConfirmationDialog(BuildContext context, String action) {
   );
 }
 
+// ignore: non_constant_identifier_names
 Future<dynamic> DetailContact(BuildContext context, User user) {
   return showModalBottomSheet(
     context: context,
@@ -397,15 +382,33 @@ Future<dynamic> DetailContact(BuildContext context, User user) {
                 const SizedBox(
                   height: 10.0,
                 ),
-                Container(
-                  height: 90.0,
-                  width: 90.0,
-                  decoration: BoxDecoration(
-                    color: primaryColor,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: NetworkImage(user.avatar),
-                      fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) {
+                        return ImageAnimation(
+                          imageURL: user.avatar,
+                        );
+                      },
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
+                    ),
+                  ),
+                  child: Container(
+                    height: 90.0,
+                    width: 90.0,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: NetworkImage(user.avatar),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

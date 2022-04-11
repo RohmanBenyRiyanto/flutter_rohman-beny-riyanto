@@ -5,7 +5,11 @@ import '../components/outline_icon_button.dart';
 import '../themes/theme.dart';
 
 class ImageAnimation extends StatefulWidget {
-  const ImageAnimation({Key? key}) : super(key: key);
+  late String imageURL;
+  ImageAnimation({
+    Key? key,
+    required this.imageURL,
+  }) : super(key: key);
 
   @override
   _ImageAnimationState createState() => _ImageAnimationState();
@@ -84,16 +88,20 @@ class _ImageAnimationState extends State<ImageAnimation> {
               ],
             ),
             child: Center(
-              child: AnimatedContainer(
-                height: isTapped ? 200.0 : 100.0,
-                width: isTapped ? 200.0 : 100.0,
-                duration: const Duration(seconds: 2),
-                curve: Curves.fastOutSlowIn,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://i.pinimg.com/236x/a2/31/01/a2310147775da5802d3e2b5ba458bdd8.jpg'),
-                    fit: BoxFit.cover,
+              child: Hero(
+                tag: widget.imageURL,
+                child: AnimatedContainer(
+                  height: isTapped ? 200.0 : 100.0,
+                  width: isTapped ? 200.0 : 100.0,
+                  duration: const Duration(seconds: 2),
+                  curve: Curves.fastOutSlowIn,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        widget.imageURL,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

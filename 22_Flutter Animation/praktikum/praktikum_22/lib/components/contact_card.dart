@@ -30,14 +30,17 @@ class _ContactCardState extends State<ContactCard> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: 48.0,
-              width: 48.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(widget.imageURL),
-                  fit: BoxFit.cover,
+            Hero(
+              tag: widget.imageURL,
+              child: Container(
+                height: 48.0,
+                width: 48.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(widget.imageURL),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
