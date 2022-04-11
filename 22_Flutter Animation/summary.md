@@ -57,3 +57,42 @@ GestureDetector(
 
 ### Ouput :
 [<img src="screenshot/Animated%20Image.png" width="400">](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/22_Flutter%20Animation/screenshot/Demo%20Video.mkv)
+
+## 2. Task Nomor 2
+Pada task ini saya menambahkan animation pada navigator.
+
+### Source Code :
+```dart
+Navigator.of(context).push(
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) {
+                      return const ImageAnimation();
+                    },
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                  ),
+                );
+
+Navigator.of(context).push(
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) {
+                      return const AddContact();
+                    },
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                  ),
+                );
+```
+
+### Output :
+[<img src="screenshot/Contact.png" width="400">](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/22_Flutter%20Animation/screenshot/Demo%20Video.mkv)  [<img src="screenshot/Add%20Contact.png" width="400">](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/22_Flutter%20Animation/screenshot/Demo%20Video.mkv) 
