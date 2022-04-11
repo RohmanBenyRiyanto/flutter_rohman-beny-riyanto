@@ -56,4 +56,4 @@ GestureDetector(
 ```
 
 ### Ouput :
-[![](screenshot/Animated%20Image.png)](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/22_Flutter%20Animation/screenshot/Demo%20Video.mkv)
+[<img src="screenshot/Animated%20Image.png" width="400">](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/22_Flutter%20Animation/screenshot/Demo%20Video.mkv)
