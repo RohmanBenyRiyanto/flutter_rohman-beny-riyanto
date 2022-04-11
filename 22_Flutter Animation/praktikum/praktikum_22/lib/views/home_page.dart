@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                         // ignore: deprecated_member_use
-                        Scaffold.of(context).showSnackBar(
+                        Scaffold.of(ctx).showSnackBar(
                           SnackBar(
                             backgroundColor: redColor,
                             shape: const RoundedRectangleBorder(
