@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/users.dart';
 
 class Contact with ChangeNotifier {
-  List<User> _users = userList;
+  // List<User> _users = userList;
 
   List<User> userSave = userList;
 
