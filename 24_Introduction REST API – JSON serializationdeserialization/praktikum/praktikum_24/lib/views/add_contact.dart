@@ -129,6 +129,7 @@ class _AddContactState extends State<AddContact> {
                   _showErrorToast();
                 } else {
                   final ContactModel contact = ContactModel(
+                    id: contactProvider.contacts.length + 1,
                     name: _nameController.text,
                     phone: _phoneController.text,
                   );
