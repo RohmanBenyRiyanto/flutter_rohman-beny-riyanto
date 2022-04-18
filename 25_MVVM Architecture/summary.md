@@ -203,5 +203,6 @@ class ContactModel {
 [View Demo](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/25_MVVM%20Architecture/screenshot/Demo.mp4)
 
 Struktur Folder : <br>
+
 <img src="screenshot/Struktur%20Folder.png" width="400">
 
