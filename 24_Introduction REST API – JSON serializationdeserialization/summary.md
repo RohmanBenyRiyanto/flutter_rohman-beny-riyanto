@@ -193,4 +193,4 @@ class ContactModel {
 
 ## Output :
 
-<img src="screenshot/Output%20Task%201.png" width="400">   <img src="screenshot/Output%20Task%201.1%20(Response.data).png" width="400">   <img src="screenshot/Output%20Task%202.png" width="400">
+<img src="screenshot/Output%20Task%201.png" width="400">   <img src="screenshot/Output%20Task%201.1%20(Response.data).png" width="1000">   <img src="screenshot/Output%20Task%202.png" width="400">
