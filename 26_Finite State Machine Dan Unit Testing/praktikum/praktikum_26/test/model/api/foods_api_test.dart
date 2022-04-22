@@ -30,16 +30,28 @@ import 'foods_api_test.mocks.dart';
 @GenerateMocks([FoodServices])
 void main() {
   FoodServices foodsServices = MockFoodServices();
-  test('get all foods return data', () async {
-    when(foodsServices.getFoods()).thenAnswer((_) async => <FoodModel>[
-          FoodModel(
-            id: 1,
-            name: 'Test Food 1',
-          ),
-        ]);
-    var foods = await foodsServices.getFoods();
-    expect(foods.isNotEmpty, true);
-  });
 
-  
+  group('FoodsAPI', () {
+    test('get all foods return data', () async {
+      when(foodsServices.getFoods()).thenAnswer((_) async => <FoodModel>[
+            FoodModel(
+              id: 1,
+              name: 'Test Food 1',
+            ),
+          ]);
+      var foods = await foodsServices.getFoods();
+      expect(foods.isNotEmpty, true);
+    });
+
+    test('get state loading', () {
+      FoodViewModel viewModel = FoodViewModel();
+      viewModel.changeState(FoodViewState.loading);
+      expect(viewModel.state, FoodViewState.loading);
+    });
+    test('get state error', () {
+      FoodViewModel viewModel = FoodViewModel();
+      viewModel.changeState(FoodViewState.error);
+      expect(viewModel.state, FoodViewState.error);
+    });
+  });
 }
