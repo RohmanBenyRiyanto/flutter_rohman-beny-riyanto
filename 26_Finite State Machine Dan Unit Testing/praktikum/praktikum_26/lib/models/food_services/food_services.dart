@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../food_model.dart';
 
+
 class FoodServices {
   String baseUrl =
       'https://my-json-server.typicode.com/hadihammurabi/flutter-webservice/foods';
