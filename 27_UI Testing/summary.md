@@ -22,5 +22,47 @@ Pada task ini saya menerapkan UI Testing untuk melakukan find.text pada halaman 
 
 Berikut hasil dari praktikum ini :
 
-[]()<br>
-[]()
+[View Source Code](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/27_UI%20Testing/praktikum/praktikum_27)<br>
+[View ScreenShot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/tree/main/27_UI%20Testing/screenshot)
+
+## Penjelasan Source Code :
+```dart
+void main() {
+// Group berguna apabila nantinya akan dibuat testing widget yang lainya
+  group(
+    'Widgets Test',
+    () {
+// Memanggil testWidget yang diharuskan terdapat deskripsi dan body
+      testWidgets(
+// Desktipsi test widget
+        'Foods Widgets Test',
+        (WidgetTester tester) async {
+// Body Test widget
+          await tester.pumpWidget(
+// Karena halaman ini menggunakan state management
+// Maka diharuskan untuk memanggil package state management tersebut
+            MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (_) => FoodViewModel(),
+                ),
+              ],
+              child: const MaterialApp(
+// Memanggil class atau halaman yang akan di lakukan testing
+                home: HomePage(),
+              ),
+            ),
+          );
+// Menambahkan await dengan durasi 3 detik
+          await tester.pumpAndSettle(const Duration(seconds: 3));
+// Melakukan pencarian text dengan isi 'Foods'
+          expect(find.text('Foods'), findsOneWidget);
+        },
+      );
+    },
+  );
+}
+```
+
+## Output : 
+![secreenshot](https://github.com/RohmanBenyRiyanto/flutter_rohman-beny-riyanto/blob/main/27_UI%20Testing/screenshot/Output%20UI%20Testing.png)
