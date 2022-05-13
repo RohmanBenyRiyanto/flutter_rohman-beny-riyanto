@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nyepatu/views/profile_screens/profile_screens.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/button_icon_circle.dart';
@@ -8,7 +6,6 @@ import '../../components/costum_alertdialog.dart';
 import '../../components/text_from_field.dart';
 import '../../provider/auth_provider.dart';
 import '../../themes/theme.dart';
-import '../../themes/transitions.dart';
 
 class EditProfile extends StatefulWidget {
   static const routeName = '/edit-profile';

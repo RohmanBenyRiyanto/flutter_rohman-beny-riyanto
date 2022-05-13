@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'category_model.dart';
 import 'gallery_model.dart';
 
@@ -37,27 +35,17 @@ class ProductModel {
     );
   }
 
-  static  Map<String, dynamic> toJson(ProductModel product) {
+  Map<String, dynamic> toJson() {
     return {
-      "id": product.id,
-      "name": product.name,
-      "price": product.price,
-      "description": product.description,
-      "categories_id": product.categoriesId,
-      "category": product.category!.toJson(),
-      "galleries": product.galery!.map((gallery) => gallery.toJson()).toList(),
+      "id": id,
+      "name": name,
+      "price": price,
+      "description": description,
+      "categories_id": categoriesId,
+      "category": category!.toJson(),
+      "galleries": galery!.map((gallery) => gallery.toJson()).toList(),
     };
   }
-
-  static String encode(List<ProductModel> list) => json.encode(
-        list.map<Map<String, dynamic>>((us) => ProductModel.toJson(us))
-            .toList(),
-      );
-
-  static List<ProductModel> decode(String list) =>
-      (json.decode(list) as List<dynamic>)
-          .map<ProductModel>((item) => ProductModel.fromJson(item))
-          .toList();
 }
 
 class UninitializedProductModel extends ProductModel {}

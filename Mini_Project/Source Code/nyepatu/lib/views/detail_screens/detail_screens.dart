@@ -10,8 +10,12 @@ import 'package:nyepatu/models/product_model.dart';
 
 import '../../components/button_icon_circle.dart';
 import '../../components/card_familiar_shoses.dart';
+import '../../components/costum_alertdialog.dart';
+import '../../provider/cart_provider.dart';
 import '../../provider/product_provider.dart';
 import '../../themes/theme.dart';
+import '../../themes/transitions.dart';
+import '../cart_screens/cart_screens.dart';
 
 class DetailScreen extends StatefulWidget {
   static const String routeName = '/detail-screens';
@@ -43,6 +47,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
     AppBar header() {
       return AppBar(
         automaticallyImplyLeading: false,
@@ -68,7 +73,13 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
               ButtonIconCircle(
                 press: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    FadeInRoute(
+                      routeName: CartScreens.routeName,
+                      page: const CartScreens(),
+                    ),
+                  );
                 },
                 icons: 'assets/icons/ic_cart.svg',
               ),
@@ -316,7 +327,10 @@ class _DetailScreenState extends State<DetailScreen> {
               SizedBox(
                 width: displayWidth(context) * 0.5,
                 child: PrimaryButton(
-                  press: () {},
+                  press: () {
+                    cart.addCart(widget.product);
+                    showSuccessDialog();
+                  },
                   text: 'Add to Cart',
                 ),
               ),
@@ -331,6 +345,24 @@ class _DetailScreenState extends State<DetailScreen> {
       backgroundColor: whiteOneColor,
       bottomNavigationBar: bottomNavigationBar(),
       body: content(),
+    );
+  }
+
+  Future<void> showSuccessDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => SizedBox(
+        width: displayWidth(context) - defaultMargin,
+        child: CostumAlertDialog(
+          press: () {
+            Navigator.push(context, FadeInRoute(page: const CartScreens()));
+          },
+          icons: 'assets/icons/ic_succes.svg',
+          tittle: 'Success',
+          subtitle: 'Product added to cart',
+          buttontext: 'View Cart',
+        ),
+      ),
     );
   }
 }

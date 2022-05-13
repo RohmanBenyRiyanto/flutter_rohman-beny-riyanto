@@ -179,7 +179,6 @@ class _SignUpState extends State<SignUp> {
                   child: TextButtons(
                     text: "Forgot Password?",
                     press: () {
-                      print("Forgot Password");
                     },
                   )),
               const SizedBox(

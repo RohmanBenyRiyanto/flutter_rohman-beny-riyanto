@@ -2,9 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nyepatu/provider/product_provider.dart';
-import 'package:nyepatu/provider/search_provider.dart';
-import 'package:nyepatu/provider/wishlist_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../animation/fade_animation.dart';
@@ -28,18 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback(
-      (timeStamp) async {
-        await Provider.of<CategoryProvider>(context, listen: false)
-            .getCategories();
-        await Provider.of<ProductProvider>(context, listen: false)
-            .buildListProduct();
-      },
-    );
 
     Future(
       () async {
-        await Future.delayed(const Duration(seconds: 3));
+        // await Future.delayed(const Duration(seconds: 3));
+        await Provider.of<CategoryProvider>(context, listen: false)
+            .getCategories();
         Provider.of<PreferencesProvider>(context, listen: false).getUser().then(
           (value) async {
             if (await Provider.of<AuthProvider>(context, listen: false)

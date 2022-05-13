@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:nyepatu/provider/category_provider.dart';
 import 'package:nyepatu/provider/product_provider.dart';
 
-import '../../animation/fade_animation.dart';
 import '../../components/card_gridview.dart';
 import '../../components/cards_populer.dart';
 import '../../components/costum_tab.dart';
@@ -30,10 +29,17 @@ class _DashBoardState extends State<DashBoard>
 
   @override
   void initState() {
+    // WidgetsBinding.instance!.addPostFrameCallback(
+    //   (timeStamp) async {
+    //     await Provider.of<ProductProvider>(context, listen: false)
+    //         .buildListProductByTags();
+    //   },
+    // );
+
     WidgetsBinding.instance!.addPostFrameCallback(
       (timeStamp) async {
         await Provider.of<ProductProvider>(context, listen: false)
-            .buildListProductByTags();
+            .buildListProduct();
       },
     );
 
@@ -61,23 +67,19 @@ class _DashBoardState extends State<DashBoard>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FadeAnimation(
-                  child: Text(
-                    'Hello, ${state.user.username!}',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 24.0,
-                      fontWeight: semiBold,
-                    ),
+                Text(
+                  'Hello, ${state.user.username!}',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 24.0,
+                    fontWeight: semiBold,
                   ),
                 ),
                 const SizedBox(height: 2),
-                FadeAnimation(
-                  child: Text(
-                    'Find your favorite shoes',
-                    style: secondaryTextStyle.copyWith(
-                      fontSize: 16.0,
-                      fontWeight: regular,
-                    ),
+                Text(
+                  'Find your favorite shoes',
+                  style: secondaryTextStyle.copyWith(
+                    fontSize: 16.0,
+                    fontWeight: regular,
                   ),
                 ),
               ],
@@ -186,7 +188,7 @@ class _DashBoardState extends State<DashBoard>
                 height: 120,
                 child: Center(
                   child: Text(
-                    'Data tidak di temukan',
+                    'Data tidak ditemukan',
                     style: blackTextStyle.copyWith(
                       fontSize: 16.0,
                       fontWeight: regular,

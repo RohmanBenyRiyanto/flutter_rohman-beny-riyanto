@@ -12,7 +12,7 @@ class SearchProvider extends ChangeNotifier {
   List<ProductModel> get productsOnSearch => _productsOnSearch;
   String get message => _message!;
 
-  Future<void> searchContact(String search, List<ProductModel> product) async {
+  Future<void> searchProduct(String search, List<ProductModel> product) async {
     _productsOnSearch.clear();
     notifyListeners();
     for (var i = 0; i < product.length; i++) {

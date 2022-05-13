@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nyepatu/themes/theme.dart';
 import 'package:nyepatu/views/dashboard_screens/dashboard_screens.dart';
-import 'package:nyepatu/views/detail_screens/detail_screens.dart';
 import 'package:nyepatu/views/profile_screens/profile_screens.dart';
 import 'package:nyepatu/views/search_screens/search_screens.dart';
 import 'package:nyepatu/views/wishlist_screens/wishlist_screens.dart';
@@ -15,6 +14,7 @@ import '../../components/costum_dialog_bottom.dart';
 import '../../provider/auth_provider.dart';
 
 import '../../themes/transitions.dart';
+import '../cart_screens/cart_screens.dart';
 import 'fixfloatingbutton/fixfloatingbutton.dart';
 
 class MainPage extends StatefulWidget {
@@ -40,7 +40,15 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     Widget cartButton() {
       return FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            FadeInRoute(
+              routeName: CartScreens.routeName,
+              page: const CartScreens(),
+            ),
+          );
+        },
         elevation: 0,
         backgroundColor: purpleOneColor,
         child: SvgPicture.asset(

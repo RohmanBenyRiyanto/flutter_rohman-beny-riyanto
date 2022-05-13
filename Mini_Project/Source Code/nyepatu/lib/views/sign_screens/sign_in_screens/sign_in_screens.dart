@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/button_icon_circle.dart';
@@ -45,7 +44,7 @@ class _SignInState extends State<SignIn> {
             ButtonIconCircle(
               icons: 'assets/icons/ic_back.svg',
               press: () {
-                SystemNavigator.pop();
+                Navigator.of(context).pop();
               },
             ),
             Text(
@@ -136,7 +135,6 @@ class _SignInState extends State<SignIn> {
                   child: TextButtons(
                     text: "Forgot Password?",
                     press: () {
-                      print("Forgot Password");
                     },
                   )),
               const SizedBox(
@@ -169,14 +167,33 @@ class _SignInState extends State<SignIn> {
                 page: const MainPage(),
               ),
               (route) => false);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: greenColor,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  8.0,
+                ),
+              ),
+              content: Text(
+                'Sign In Success',
+                style: whiteTextStyle.copyWith(
+                  fontSize: 14.0,
+                  fontWeight: medium,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: redColor,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  8.0,
                 ),
               ),
               content: Text(

@@ -21,10 +21,8 @@ class ProductService {
         product.add(ProductModel.fromJson(item));
       }
 
-      print(response.body);
       return product;
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
@@ -43,10 +41,8 @@ class ProductService {
         product.add(ProductModel.fromJson(item));
       }
 
-      print("Product by categories -> " + response.body);
       return product;
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
@@ -64,10 +60,8 @@ class ProductService {
         product.add(ProductModel.fromJson(item));
       }
 
-      print("Product by tags -> " + response.body);
       return product;
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }

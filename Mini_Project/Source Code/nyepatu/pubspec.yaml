@@ -40,17 +40,21 @@ dependencies:
   http: ^0.13.4
   shared_preferences: ^2.0.13
   card_swiper: ^2.0.3
-  dio: ^4.0.6
   json_annotation: ^4.4.0
   dotted_border: ^2.0.0+2
   carousel_slider: ^4.1.1
   readmore: ^2.1.0
+  cached_network_image: ^3.2.0
+  device_preview: ^1.0.0
+  flutter_launcher_icons: ^0.9.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.1.6
-  build_runner: ^2.0.4
+  build_runner:
+  test:
+  mockito:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

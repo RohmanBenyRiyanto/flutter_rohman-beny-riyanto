@@ -66,7 +66,7 @@ class _CostumTextFromFieldPWState extends State<CostumTextFromFieldPW> {
         contentPadding: const EdgeInsets.all(16),
         suffixIcon: GestureDetector(
           onTap: () => _toggleVisibility(),
-          child: Container(
+          child: SizedBox(
             height: 12,
             width: 12,
             child: SvgPicture.asset(

@@ -1,9 +1,7 @@
-import 'dart:convert';
+// ignore_for_file: constant_identifier_names, prefer_final_fields
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:nyepatu/provider/product_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/product_model.dart';
 
@@ -70,34 +68,4 @@ class WishlistProvider extends ChangeNotifier {
     }
     _getAllFavorite();
   }
-
-  // void saveDataFav(List<ProductModel> list) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-
-  //   // String json = jsonEncode(list.toString());
-  //   final String encodeData = ProductModel.encode(
-  //     _favoritesProduct,
-  //   );
-
-  //   // String json = jsonEncode(testUser);
-  //   print('Generate JSON $encodeData');
-  //   prefs.setString('favorite', encodeData);
-  //   notifyListeners();
-  // }
-
-  // void loadData() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   try {
-  //     final String? productString = await prefs.getString('favorite');
-  //     final List<ProductModel> usersSp =
-  //         ProductModel.decode(productString!).toList();
-  //     String? json = prefs.getString('MyUser_Key');
-  //     print(json);
-  //     _prefFavorite = usersSp;
-  //   } catch (Excepetion) {
-  //     print('Data Null');
-  //   }
-
-  //   notifyListeners();
-  // }
 }

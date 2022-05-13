@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:nyepatu/animation/fade_animation.dart';
 
 import 'package:nyepatu/models/product_model.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/cart_provider.dart';
 import '../themes/theme.dart';
 import '../themes/transitions.dart';
+import '../views/cart_screens/cart_screens.dart';
 import '../views/detail_screens/detail_screens.dart';
 import 'button_add.dart';
 import 'button_whislist.dart';
+import 'costum_alertdialog.dart';
 
 class CardGridView extends StatelessWidget {
   const CardGridView({
@@ -21,6 +25,7 @@ class CardGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -147,7 +152,18 @@ class CardGridView extends StatelessWidget {
                   const SizedBox(width: 6.0),
                   FadeAnimation(
                     child: ButtonAdd(
-                      press: () {},
+                      press: () {
+                        FadeAnimation(
+                          child: ButtonAdd(
+                            press: () {
+                              cart.addCart(product);
+                              showSuccessDialog(context);
+                            },
+                            height: 45,
+                            width: 45,
+                          ),
+                        );
+                      },
                       height: 40,
                       width: 40,
                     ),
@@ -156,6 +172,29 @@ class CardGridView extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> showSuccessDialog(ctx) async {
+    return showDialog(
+      context: ctx,
+      builder: (BuildContext context) => SizedBox(
+        width: displayWidth(context) - defaultMargin,
+        child: CostumAlertDialog(
+          press: () {
+            Navigator.push(
+              context,
+              FadeInRoute(
+                page: const CartScreens(),
+              ),
+            );
+          },
+          icons: 'assets/icons/ic_succes.svg',
+          tittle: 'Success',
+          subtitle: 'Product added to cart',
+          buttontext: 'View Cart',
         ),
       ),
     );

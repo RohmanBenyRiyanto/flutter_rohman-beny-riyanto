@@ -62,6 +62,7 @@ class CardSearch extends StatelessWidget {
                       child: Image.network(
                         product.galery![0].url,
                         fit: BoxFit.scaleDown,
+                      
                       ),
                     ),
                   ),

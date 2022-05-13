@@ -21,10 +21,22 @@ class _SearchState extends State<Search> {
   final TextEditingController _searchController = TextEditingController();
   var focusNode = FocusNode();
 
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void dispose() {
     _searchController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+      await Provider.of<SearchProvider>(context, listen: false).searchProduct(
+          '', Provider.of<ProductProvider>(context, listen: false).products);
+    });
+
+    super.initState();
   }
 
   @override
@@ -71,7 +83,7 @@ class _SearchState extends State<Search> {
                   contentPadding: const EdgeInsets.all(16),
                 ),
                 onChanged: (value) {
-                  searchProvider.searchContact(value, productProvider.products);
+                  searchProvider.searchProduct(value, productProvider.products);
                 },
               ),
             ),
@@ -80,7 +92,7 @@ class _SearchState extends State<Search> {
             ),
             GestureDetector(
               onTap: () {
-                searchProvider.searchContact(
+                searchProvider.searchProduct(
                     _searchController.text, productProvider.products);
               },
               child: Container(
@@ -216,6 +228,7 @@ class _SearchState extends State<Search> {
             height: 8.0,
           ),
           ListView.builder(
+            controller: _scrollController,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: searchProvider.productsOnSearch.length,
@@ -240,11 +253,14 @@ class _SearchState extends State<Search> {
           : _searchController.text.isNotEmpty &&
                   searchProvider.productsOnSearch.isEmpty
               ? isEmpty()
-              : ListView(
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    content(),
-                  ],
+              : Scrollbar(
+                  isAlwaysShown: true,
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      content(),
+                    ],
+                  ),
                 ),
     );
   }

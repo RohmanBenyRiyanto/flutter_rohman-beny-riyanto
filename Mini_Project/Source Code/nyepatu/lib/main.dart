@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nyepatu/provider/cart_provider.dart';
 import 'package:nyepatu/provider/search_provider.dart';
+import 'package:nyepatu/provider/transaction_provider.dart';
 import 'package:nyepatu/provider/wishlist_provider.dart';
 import 'package:nyepatu/views/mainpage_screens/main_page.dart';
 import 'package:provider/provider.dart';
@@ -13,9 +15,9 @@ import 'views/sign_screens/sign_in_screens/sign_in_screens.dart';
 import 'views/sign_screens/sign_up_screens/sign_up_screens.dart';
 import 'views/splash_screens/splash_screens.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(
+      const MyApp(),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -42,7 +44,13 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => WishlistProvider(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TransactionProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

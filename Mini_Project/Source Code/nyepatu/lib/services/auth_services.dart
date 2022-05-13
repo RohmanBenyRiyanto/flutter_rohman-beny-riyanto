@@ -1,14 +1,15 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
 import '../models/user_models.dart';
-import 'package:dio/dio.dart';
 
 class AuthService {
   String basedUrl = "https://srv1.shamoserver.my.id/api";
 
-  Dio dio = Dio();
+  dynamic client = http.Client();
 
   Future<UserModel> register(
     String name,
