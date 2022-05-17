@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
 import 'package:nyepatu/themes/theme.dart';
 import 'package:nyepatu/views/dashboard_screens/dashboard_screens.dart';
 import 'package:nyepatu/views/profile_screens/profile_screens.dart';
 import 'package:nyepatu/views/search_screens/search_screens.dart';
 import 'package:nyepatu/views/wishlist_screens/wishlist_screens.dart';
-import 'package:provider/provider.dart';
 
 import '../../animation/fade_animation.dart';
 import '../../components/button_drawer.dart';
 import '../../components/button_icon_circle.dart';
 import '../../components/costum_dialog_bottom.dart';
 import '../../provider/auth_provider.dart';
-
 import '../../themes/transitions.dart';
 import '../cart_screens/cart_screens.dart';
 import 'fixfloatingbutton/fixfloatingbutton.dart';
 
 class MainPage extends StatefulWidget {
   static const String routeName = '/mainpage';
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -28,6 +30,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final GlobalKey<ScaffoldState> globalScaffoldKey = GlobalKey();
   int currentIndex = 0;
+
+  int get currentsIndexs => currentIndex;
 
   final List<Widget> body = [
     const DashBoard(),
@@ -93,10 +97,11 @@ class _MainPageState extends State<MainPage> {
                 showUnselectedLabels: false,
                 elevation: 0,
                 backgroundColor: whiteOneColor,
-                currentIndex: currentIndex,
+                currentIndex: currentsIndexs,
                 onTap: (value) {
                   setState(() {
                     currentIndex = value;
+
                     // ignore: avoid_print
                     print(value);
                   });
@@ -107,7 +112,8 @@ class _MainPageState extends State<MainPage> {
                     icon: SvgPicture.asset(
                       'assets/icons/ic_home.svg',
                       width: 21,
-                      color: currentIndex == 0 ? purpleOneColor : grayTwoColor,
+                      color:
+                          currentsIndexs == 0 ? purpleOneColor : grayTwoColor,
                     ),
                     label: '',
                   ),
@@ -118,7 +124,7 @@ class _MainPageState extends State<MainPage> {
                         'assets/icons/ic_search.svg',
                         width: 20,
                         color:
-                            currentIndex == 1 ? purpleOneColor : grayTwoColor,
+                            currentsIndexs == 1 ? purpleOneColor : grayTwoColor,
                       ),
                     ),
                     label: '',
@@ -130,7 +136,7 @@ class _MainPageState extends State<MainPage> {
                         'assets/icons/ic_love_outline.svg',
                         width: 20,
                         color:
-                            currentIndex == 2 ? purpleOneColor : grayTwoColor,
+                            currentsIndexs == 2 ? purpleOneColor : grayTwoColor,
                       ),
                     ),
                     label: '',
@@ -139,7 +145,8 @@ class _MainPageState extends State<MainPage> {
                     icon: SvgPicture.asset(
                       'assets/icons/ic_profile.svg',
                       width: 18,
-                      color: currentIndex == 3 ? purpleOneColor : grayTwoColor,
+                      color:
+                          currentsIndexs == 3 ? purpleOneColor : grayTwoColor,
                     ),
                     label: '',
                   ),
@@ -288,13 +295,23 @@ class _MainPageState extends State<MainPage> {
                           icons: 'assets/icons/ic_profile.svg',
                           tittle: 'Profile',
                           width: 18,
-                          press: () {},
+                          press: () {
+                            setState(() {
+                              currentIndex = 3;
+                            });
+                            Navigator.of(context).pop();
+                          },
                         ),
                         ButtonDrawer(
                           icons: 'assets/icons/ic_love_outline.svg',
                           tittle: 'Wishlist',
                           width: 18,
-                          press: () {},
+                          press: () {
+                            setState(() {
+                              currentIndex = 2;
+                            });
+                            Navigator.of(context).pop();
+                          },
                         ),
                         ButtonDrawer(
                           icons: 'assets/icons/ic_your_order.svg',
@@ -337,16 +354,16 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       key: globalScaffoldKey,
-      appBar: currentIndex == 0 ? header() : null,
+      appBar: currentsIndexs == 0 ? header() : null,
       drawer: drawerContent(),
       extendBody: true,
       backgroundColor: whiteOneColor,
-      body: currentIndex != 3
+      body: currentsIndexs != 3
           ? SafeArea(
-              child: body[currentIndex],
+              child: body[currentsIndexs],
               bottom: false,
             )
-          : body[currentIndex],
+          : body[currentsIndexs],
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: const FixedCenterDockedFabLocation(),
       bottomNavigationBar: CustomBottomNav(),

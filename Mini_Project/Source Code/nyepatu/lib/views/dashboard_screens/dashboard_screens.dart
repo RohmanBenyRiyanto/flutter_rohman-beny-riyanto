@@ -29,12 +29,12 @@ class _DashBoardState extends State<DashBoard>
 
   @override
   void initState() {
-    // WidgetsBinding.instance!.addPostFrameCallback(
-    //   (timeStamp) async {
-    //     await Provider.of<ProductProvider>(context, listen: false)
-    //         .buildListProductByTags();
-    //   },
-    // );
+    WidgetsBinding.instance!.addPostFrameCallback(
+      (timeStamp) async {
+        await Provider.of<ProductProvider>(context, listen: false)
+            .buildListProductByTags();
+      },
+    );
 
     WidgetsBinding.instance!.addPostFrameCallback(
       (timeStamp) async {

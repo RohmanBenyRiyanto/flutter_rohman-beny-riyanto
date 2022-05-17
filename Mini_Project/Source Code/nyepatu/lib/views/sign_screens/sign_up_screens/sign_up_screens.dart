@@ -98,7 +98,7 @@ class _SignUpState extends State<SignUp> {
                     return ("Please Input Your Name");
                   }
                   if (!regex.hasMatch(value)) {
-                    return ("Enter Valid Full Name");
+                    return ("First letter must be capital!");
                   }
 
                   return null;

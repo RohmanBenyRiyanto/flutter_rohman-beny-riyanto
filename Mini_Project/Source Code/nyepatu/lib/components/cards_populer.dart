@@ -100,6 +100,21 @@ class CardsPopuler extends StatelessWidget {
                               product.galery![0].url,
                               height: 112.0,
                               fit: BoxFit.contain,
+                              loadingBuilder: (context, child, progress) {
+                                if (progress == null) {
+                                  return child;
+                                } else {
+                                  return SizedBox(
+                                    height: 112.0,
+                                    child: Center(
+                                      child: CircularProgressIndicator(
+                                        valueColor: AlwaysStoppedAnimation(
+                                            purpleOneColor),
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
                             ),
                           ),
                   ),

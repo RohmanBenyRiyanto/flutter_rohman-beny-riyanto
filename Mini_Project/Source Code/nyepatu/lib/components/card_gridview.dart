@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:nyepatu/animation/fade_animation.dart';
 
 import 'package:nyepatu/models/product_model.dart';
+import 'package:nyepatu/views/mainpage_screens/main_page.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';
@@ -26,6 +27,7 @@ class CardGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -94,6 +96,21 @@ class CardGridView extends StatelessWidget {
                               child: Image.network(
                                 product.galery![0].url,
                                 height: 73,
+                                loadingBuilder: (context, child, progress) {
+                                  if (progress == null) {
+                                    return child;
+                                  } else {
+                                    return SizedBox(
+                                      height: 73,
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          valueColor: AlwaysStoppedAnimation(
+                                              purpleOneColor),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
                               ),
                             ),
                     ),
@@ -153,16 +170,9 @@ class CardGridView extends StatelessWidget {
                   FadeAnimation(
                     child: ButtonAdd(
                       press: () {
-                        FadeAnimation(
-                          child: ButtonAdd(
-                            press: () {
-                              cart.addCart(product);
-                              showSuccessDialog(context);
-                            },
-                            height: 45,
-                            width: 45,
-                          ),
-                        );
+                        print('cek');
+                        cart.addCart(product);
+                        showSuccessDialog(context);
                       },
                       height: 40,
                       width: 40,
